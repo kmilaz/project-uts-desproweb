@@ -1,7 +1,5 @@
 $(document).ready(function() {
     // 1. Variabel keranjang.
-    // 'initialCartData' akan kita buat di file PHP.
-    // Jika tidak ada data yang dioper, kita mulai dengan array kosong.
     var cart = typeof initialCartData !== 'undefined' ? initialCartData : [];
     updateCartCount(); // Langsung update hitungan saat halaman dimuat
 
@@ -12,7 +10,7 @@ $(document).ready(function() {
 
         var productExists = false;
         for (var i = 0; i < cart.length; i++) {
-            if (cart[i].id == productId) { // Gunakan '==' karena tipe data bisa berbeda
+            if (cart[i].id == productId) { 
                 cart[i].quantity += quantity;
                 productExists = true;
                 break;
