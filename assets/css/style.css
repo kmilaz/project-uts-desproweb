@@ -78,7 +78,7 @@ section {
 }
 
 .logo img {
-    height: 40px; /* Anda bisa sesuaikan ukurannya di sini */
+    height: 40px; 
     width: auto;
     display: block; /* Menghilangkan spasi ekstra di bawah gambar */
 }
@@ -155,7 +155,7 @@ section {
 
 /* --- Header Halaman (Shop, Contact, dll) --- */
 .page-header {
-    background-image: url('../img/page-header.png'); /* <-- UBAH DI SINI */
+    background-image: url('../img/page-header.png'); 
     background-size: cover; /* Membuat gambar memenuhi seluruh area */
     background-position: center; /* Memposisikan gambar di tengah */
     text-align: center;
@@ -251,14 +251,14 @@ section {
 }
 
 .product-image {
-    width: 55%; /* Beri jatah 55% dari total lebar untuk kolom gambar */
+    width: 55%; /* jatah 55% dari total lebar untuk kolom gambar */
     flex-shrink: 0; /* Mencegah kolom gambar menyusut */
 }
 
 .product-image img {
     width: 100%; /* Lebar gambar mengisi penuh kolomnya */
     height: 400px; /* PENTING: Paksa semua gambar punya tinggi yang sama */
-    object-fit: cover; /* INI 'SIHIRNYA': Mencegah gambar gepeng */
+    object-fit: cover; 
     background-color: var(--light-grey);
     border: 1px solid var(--border-color);
     margin-bottom: 15px;
