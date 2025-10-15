@@ -29,6 +29,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Discover Our<br>New Collection</h1>
+            <p>Temukan koleksi perhiasan terbaru kami dengan desain yang elegan dan penuh warna. Hadirkan sentuhan unik untuk gaya kamu sehari-hari!</p>
             <button class="btn-utama" onclick="window.location.href='shop.php'">Shop Now</button>
         </div>
     </section>
