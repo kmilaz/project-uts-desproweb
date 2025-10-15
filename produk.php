@@ -1,5 +1,5 @@
 <?php
-    include 'data/produk_data.php'; // Panggil data dulu
+    include 'data/produk_data.php'; 
 
     // --- BLOK KODE UNTUK ESTAFET DATA KERANJANG ---
     $cart_data_string_php = '';
