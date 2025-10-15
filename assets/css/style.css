@@ -1,0 +1,432 @@
+/* =================================
+   1. VARIABLES & GLOBAL STYLES
+   ================================= */
+:root {
+    --primary-color: #e8a941; /* Warna oranye/emas utama */
+    --text-color: #3a3a3a;      /* Warna teks utama (gelap) */
+    --grey-color: #777;       /* Warna teks abu-abu */
+    --light-grey: #f8f8f8;     /* Warna latar belakang terang */
+    --border-color: #eaeaea;   /* Warna border */
+    --font-main: 'Poppins', sans-serif;
+}
+
+body {
+    font-family: var(--font-main);
+    margin: 0;
+    color: var(--text-color);
+    background-color: #ffffff;
+}
+
+main {
+    min-height: 70vh;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 600;
+}
+
+section {
+    padding: 60px 5%;
+}
+
+.btn-utama {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-utama:hover {
+    background-color: #d1983a;
+}
+
+/* =================================
+   2. HEADER & FOOTER (PARTIALS)
+   ================================= */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    border-bottom: 1px solid var(--border-color);
+    background-color: #fff;
+}
+
+.logo a {
+    display: inline-block; /* Agar link mengikuti ukuran gambar */
+}
+
+.logo img {
+    height: 40px; /* Anda bisa sesuaikan ukurannya di sini */
+    width: auto;
+    display: block; /* Menghilangkan spasi ekstra di bawah gambar */
+}
+
+.navigasi a {
+    margin: 0 20px;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.ikon-header a {
+    margin-left: 20px;
+    font-size: 1.1em; /* Atur ukuran ikon di sini */
+    display: inline-flex; /* Membuat ikon dan teks (jumlah keranjang) sejajar */
+    align-items: center;
+    gap: 5px; /* Memberi jarak antara ikon keranjang dan angkanya */
+}
+
+.footer {
+    background-color: var(--light-grey);
+    padding: 50px 5%;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between; /* Tetap pertahankan ini */
+    gap: 30px; /* Jarak antar kolom */
+    align-items: flex-start; /* PENTING: Membuat semua kolom rata atas */
+    flex-wrap: wrap; /* Memungkinkan kolom turun ke bawah jika layar sempit */
+}
+
+.footer-col {
+    flex: 1; /* Membuat setiap kolom mencoba mengambil ruang yang sama */
+    min-width: 200px; /* Lebar minimum sebelum kolom turun ke bawah */
+}
+
+.footer-col h4 {
+    margin-top: 0; /* Menghapus margin atas pada judul agar lebih rapi */
+    margin-bottom: 15px;
+}
+
+.footer-col a, .footer-col p {
+    display: block;
+    margin-top: 10px;
+    color: var(--grey-color);
+    font-size: 0.9em;
+    line-height: 1.6;
+}
+
+.footer-col form {
+    display: flex; /* Membuat input email dan tombol sejajar */
+}
+
+.footer-col input[type="email"] {
+    flex-grow: 1; /* Membuat input email mengisi sisa ruang */
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-right: none;
+}
+
+.footer-col button {
+    padding: 8px 12px;
+    border: 1px solid #333;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+}
+/* ... (styling footer lainnya tetap sama) ... */
+
+
+/* =================================
+   3. HALAMAN SPESIFIK
+   ================================= */
+
+/* --- Header Halaman (Shop, Contact, dll) --- */
+.page-header {
+    background-image: url('../img/page-header.png'); /* <-- UBAH DI SINI */
+    background-size: cover; /* Membuat gambar memenuhi seluruh area */
+    background-position: center; /* Memposisikan gambar di tengah */
+    text-align: center;
+    padding: 60px 20px; /* Tambah padding agar lebih tinggi */
+    color: black; /* Ganti warna teks menjadi putih agar terbaca */
+}
+.page-header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+.page-header p {
+    color: var(--grey-color);
+}
+
+.breadcrumb {
+    padding: 1px 5%;
+    background-color: var(--light-grey);
+    border-bottom: 1px solid var(--border-color);
+    color: var(--grey-color);
+}
+
+/* --- Homepage --- */
+.hero {
+    /* Atur gambar latar Anda di sini */
+    background-image: url('../img/hero-bg.png'); 
+    background-size: cover;
+    background-position: center;
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10% 10%;
+}
+.hero-content {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 50px;
+    max-width: 400px;
+    text-align: left;
+}
+.hero-content h1 {
+    font-size: 2.8em;
+    line-height: 1.2;
+    margin-top: 0;
+}
+
+/* --- Grid Produk (Home & Shop) --- */
+.products {
+    text-align: center;
+    max-width: 1200px; /* Lebar maksimal agar tidak terlalu lebar di layar besar */
+    margin-left: auto;  /* Ini yang membuatnya ke tengah */
+    margin-right: auto;
+}
+.product-grid {
+    display: grid;
+    /* Gunakan CSS Grid seperti di materi */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 30px;
+}
+.product-card {
+    text-align: left;
+}
+.product-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    background-color: var(--light-grey);
+    border: 1px solid var(--border-color);
+    margin-bottom: 15px;
+}
+.product-card h4 {
+    margin: 5px 0;
+    font-weight: 600;
+}
+.product-card p {
+    margin: 0;
+    color: var(--grey-color);
+    font-weight: 500;
+}
+
+.products-range {
+    display: flex;
+    justify-content: center;
+    padding-top: 0; 
+    padding-bottom: 60px;
+}
+
+/* --- Halaman Detail Produk --- */
+.single-product-layout {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+}
+
+.product-image {
+    width: 55%; /* Beri jatah 55% dari total lebar untuk kolom gambar */
+    flex-shrink: 0; /* Mencegah kolom gambar menyusut */
+}
+
+.product-image img {
+    width: 100%; /* Lebar gambar mengisi penuh kolomnya */
+    height: 400px; /* PENTING: Paksa semua gambar punya tinggi yang sama */
+    object-fit: cover; /* INI 'SIHIRNYA': Mencegah gambar gepeng */
+    background-color: var(--light-grey);
+    border: 1px solid var(--border-color);
+    margin-bottom: 15px;
+}
+
+.product-details {
+    width: 45%; /* Beri jatah 45% untuk kolom detail teks */
+    flex-shrink: 0;
+}
+.product-details h1 {
+    margin-top: 0;
+    font-size: 2.5em;
+}
+.product-details h2 {
+    font-size: 1.8em;
+    color: var(--primary-color);
+}
+.quantity-input {
+    width: 60px;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    font-size: 1em;
+}
+.product-actions {
+    margin: 25px 0;
+    display: flex;
+    gap: 10px;
+}
+.product-meta p {
+    color: var(--grey-color);
+}
+
+/* --- Halaman Keranjang (Cart) --- */
+.cart-section {
+    padding: 40px 5%;
+}
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+}
+.cart-table th, .cart-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+.cart-table th {
+    font-weight: 600;
+    background-color: var(--light-grey);
+}
+.cart-totals {
+    width: 40%;
+    margin-left: auto;
+    background-color: var(--light-grey);
+    padding: 30px;
+    border: 1px solid var(--border-color);
+}
+.cart-totals h3 {
+    margin-top: 0;
+}
+.cart-totals p {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* =================================
+   4. HALAMAN KONTAK
+   ================================= */
+
+.contact-info, .contact-form {
+    flex: 1; /* Membuat kedua kolom berbagi ruang 50:50 */
+}
+
+/* Tambahan style agar lebih mirip desain */
+.contact-info h3 {
+    margin-top: 0;
+    font-size: 1.8em;
+}
+.info-item {
+    margin-top: 25px;
+}
+.info-item p {
+    margin-top: 5px;
+    color: var(--grey-color);
+}
+
+.contact-section, .checkout-form {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+}
+.contact-info, .contact-form, .customer-details, .order-summary {
+    flex: 1;
+}
+.customer-details {
+    flex: 1.5; /* Form lebih lebar */
+}
+.contact-form form, .customer-details {
+    display: flex;
+    flex-direction: column;
+}
+.contact-form label, .checkout-form label {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+.contact-form input, .contact-form textarea, .checkout-form input {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    font-size: 1em;
+    font-family: var(--font-main);
+}
+.contact-form button, .order-summary button {
+    margin-top: 20px;
+    width: 100%;
+}
+.order-summary {
+    background-color: var(--light-grey);
+    padding: 30px;
+    border: 1px solid var(--border-color);
+}
+.order-summary h3, .order-summary p {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* --- Halaman Konfirmasi (Proses Form) --- */
+.container-proses {
+    text-align: center;
+    padding: 80px 15%;
+    line-height: 1.8;
+}
+.container-proses h1 {
+    color: #28a745; /* Hijau sukses */
+}
+
+/* =================================
+   5. HALAMAN ABOUT
+   ================================= */
+.about-section {
+    display: flex;
+    align-items: center; /* Membuat gambar dan teks sejajar di tengah secara vertikal */
+    gap: 50px;
+    max-width: 1100px;
+    margin: auto; /* Agar section berada di tengah */
+}
+
+.about-image {
+    flex: 1; /* Kolom gambar mengambil 50% ruang */
+}
+
+.about-image img {
+    width: 100%; 
+    border-radius: 10px; /* Membuat sudut gambar sedikit melengkung */
+}
+
+.about-text {
+    flex: 1; /* Kolom teks mengambil 50% ruang */
+}
+
+.about-text h3 {
+    font-size: 2.2em;
+    margin-top: 0;
+}
+
+.about-text p {
+    line-height: 1.8; /* Memberi jarak antar baris agar mudah dibaca */
+    color: var(--grey-color);
+}
