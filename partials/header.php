@@ -1,3 +1,7 @@
+<?php
+include 'database/migrasi.php';
+
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>

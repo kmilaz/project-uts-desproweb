@@ -15,7 +15,9 @@
         $items_pairs = explode(',', $cart_data_string_php);
         $cart_array_for_js = [];
         foreach ($items_pairs as $pair) {
+            // var_dump($pair);
             $details = explode(':', $pair);
+            // var_dump($details);
             if(count($details) == 2){
                 $cart_array_for_js[] = ['id' => $details[0], 'quantity' => (int)$details[1]];
             }
@@ -24,6 +26,10 @@
         $initial_cart_js = json_encode($cart_array_for_js);
     }
     // --- AKHIR BLOK KODE ESTAFET ---
+
+    require_once 'database/koneksi.php';
+    $selectSql = 'SELECT * FROM "products"';
+    $result = query($selectSql, $connection);
 ?>
 
 <main>
@@ -34,17 +40,15 @@
 
     <section class="shop-content">
         <div class="product-grid shop-grid">
-             <?php 
-                foreach ($products as $product) {
-                    echo '<div class="product-card">';
-                    echo '<a href="#" onclick="navigateTo(\'produk.php?id=' . $product["id"] . '\')">';
-                    echo '<img src="' . $product["image"] . '" alt="' . $product["name"] . '">';
-                    echo '<h4>' . $product["name"] . '</h4>';
-                    echo '<p>Rp ' . number_format($product["price"], 0, ',', '.') . '</p>';
-                    echo '</a>';
-                    echo '</div>';
-                }
-            ?>
+            <?php while($row = pg_fetch_assoc($result)):?>
+            <div class="product-card">
+                <a href="#" onclick="navigateTo('produk.php?id=<?= htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8')?>')">
+                    <img src="<?= htmlspecialchars($row['image'], ENT_QUOTES, 'UTF-8') ?>" alt="<?= htmlspecialchars($row['name'], ENT_QUOTES, 'UTF-8') ?>">
+                    <h4><?= htmlspecialchars($row['name'], ENT_QUOTES, 'UTF-8') ?></h4>
+                    <p>Rp <?= htmlspecialchars(number_format($row['price'], 0, ',', '.'), ENT_QUOTES, 'UTF-8') ?></p>
+                </a>
+            </div>
+            <?php endwhile?>
         </div>
     </section>
 </main>
