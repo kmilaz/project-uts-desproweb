@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
         }
         
         echo "Produk berhasil diperbarui.";
-        header("Location: daftar_produk.php"); 
+        header("Location: produkView.php"); 
         exit;
     } else {
         echo "Gagal memperbarui produk: " . pg_last_error($connection);
@@ -56,6 +56,6 @@ if (isset($_POST['submit'])) {
     }
 
 } else {
-    header("Location: daftar_produk.php");
+    header("Location: produkView.php");
 }
 ?>

@@ -22,6 +22,7 @@ function updateProduct($connection, $id, $data)
     $params = [
         $data['name'],
         $data['price'],
+        $data['image'],
         $data['category'],
         $data['tags'],
         $data['description'],
@@ -31,10 +32,11 @@ function updateProduct($connection, $id, $data)
     $sql = "UPDATE products SET 
                 name = $1,
                 price = $2,
-                category = $3,
-                tags = $4,
-                description = $5
-            WHERE id = $6";
+                image = $3,
+                category = $4,
+                tags = $5,
+                description = $6
+            WHERE id = $7";
 
     $result = pg_query_params($connection, $sql, $params);
     return $result;
