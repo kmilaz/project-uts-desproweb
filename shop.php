@@ -1,7 +1,7 @@
 <?php 
     $pageTitle = "Shop";
     include 'partials/header.php';
-    include 'data/produk_data.php';
+    include_once "model/produkModel.php";
 
     // --- BLOK KODE UNTUK ESTAFET DATA KERANJANG ---
     $cart_data_string_php = '';
@@ -29,7 +29,7 @@
 
     require_once 'database/koneksi.php';
     $selectSql = 'SELECT * FROM "products"';
-    $result = query($selectSql, $connection);
+    $result = pg_query($connection, $selectSql);
 ?>
 
 <main>
