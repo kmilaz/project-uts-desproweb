@@ -1,7 +1,8 @@
 <?php 
     $pageTitle = "Checkout";
     include 'partials/header.php';
-    include 'data/produk_data.php';
+    include_once 'database/koneksi.php';
+    include_once 'model/produkModel.php';
 
     // --- BLOK KODE UNTUK ESTAFET DATA KERANJANG ---
     $cart_data_string_php = '';
@@ -66,13 +67,11 @@
                     echo "<p>Keranjang Anda kosong.</p>";
                 } else {
                     foreach ($cart_items_processed as $item) {
-                        foreach ($products as $p) {
-                            if ($p['id'] == $item['id']) {
-                                $subtotal = $p['price'] * $item['quantity'];
-                                $total += $subtotal;
-                                echo "<p>" . htmlspecialchars($p['name']) . " x " . $item['quantity'] . " <span>Rp " . number_format($subtotal) . "</span></p>";
-                                break;
-                            }
+                        $product_detail = getProductById($connection, $item['id']);
+                        if ($product_detail) {
+                            $subtotal = $product_detail['price'] * $item['quantity'];
+                            $total += $subtotal;
+                            echo "<p>" . htmlspecialchars($product_detail['name']) . " x " . $item['quantity'] . " <span>Rp " . number_format($subtotal) . "</span></p>";
                         }
                     }
                 }

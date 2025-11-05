@@ -1,5 +1,6 @@
 <?php
-    include 'data/produk_data.php'; 
+    include 'database/koneksi.php';
+    include_once 'model/produkModel.php'; 
 
     // --- BLOK KODE UNTUK ESTAFET DATA KERANJANG ---
     $cart_data_string_php = '';
@@ -23,16 +24,12 @@
     }
     // --- AKHIR BLOK KODE ESTAFET ---
 
-    // Mengambil ID dari URL menggunakan $_GET
     $productId = isset($_GET['id']) ? (int)$_GET['id'] : 0;
     $product = null;
 
-    // Cari produk di dalam array berdasarkan ID
-    foreach ($products as $p) {
-        if ($p['id'] === $productId) {
-            $product = $p;
-            break;
-        }
+    if ($productId > 0) {
+        // Panggil fungsi dari database (dari produkModel.php)
+        $product = getProductById($connection, $productId);
     }
 
     if (!$product) {
