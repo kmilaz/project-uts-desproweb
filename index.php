@@ -1,7 +1,10 @@
 <?php 
     $pageTitle = "Home"; 
     include 'partials/header.php'; 
-    include 'data/produk_data.php'; 
+
+    include_once "model/produkModel.php";
+    $products = getProduct();
+
     // --- BLOK KODE UNTUK ESTAFET DATA KERANJANG ---
     $cart_data_string_php = '';
     $initial_cart_js = '[]'; // Default keranjang kosong untuk JavaScript
