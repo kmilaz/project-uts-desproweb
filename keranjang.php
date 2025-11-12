@@ -1,7 +1,6 @@
 <?php 
     $pageTitle = "Keranjang Belanja";
     include 'partials/header.php';
-    include_once 'database/koneksi.php';
     include_once 'model/produkModel.php';
 
     // --- BLOK KODE UNTUK ESTAFET DATA KERANJANG ---
@@ -73,7 +72,7 @@
                     <?php
                     $total = 0;
                     foreach ($cart_items_processed as $item):
-                        $product_detail = getProductById($connection, $item['id']);
+                        $product_detail = getProductById($item['id']);
                         if ($product_detail):
                             $subtotal = $product_detail['price'] * $item['quantity'];
                             $total += $subtotal;
