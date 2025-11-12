@@ -1,6 +1,7 @@
 <?php
+
 $pageTitle = "Admin - Create Product";
-include "partials/header.php";
+include "../../partials/admin_header.php";
 ?>
 <main class="container my-4">
 
@@ -10,7 +11,7 @@ include "partials/header.php";
                     <h4 class="mb-0">Tambah Produk Baru</h4>
                 </div>
                 <div class="card-body p-4">
-                    <form action="produkStore.php" method="POST" enctype="multipart/form-data">
+                    <form action="../produkStore.php" method="POST" enctype="multipart/form-data">
                         
                         <div class="mb-3">
                             <label for="name" class="form-label">Nama Produk</label>
@@ -54,5 +55,5 @@ include "partials/header.php";
     </div>
 </main>
 <?php
-include "partials/footer.php";
+include "../../partials/admin_footer.php";
 ?>

@@ -1,8 +1,8 @@
 <?php
+
 $pageTitle = "Admin - Edit Produk";
-include "partials/header.php";
-include_once "database/koneksi.php";
-include_once "model/produkModel.php";
+include "../../partials/admin_header.php";
+include_once "../../model/produkModel.php";
 
 $id = $_GET['id'];
 if (!$id) {
@@ -10,7 +10,7 @@ if (!$id) {
     exit;
 }
 
-$product = getProductById($connection, $id);
+$product = getProductById($id);
 
 if (!$product) {
     echo "Produk tidak ditemukan!";
@@ -26,7 +26,7 @@ if (!$product) {
                 </div>
                 <div class="card-body p-4">
                     
-                    <form action="produkUpdate.php" method="POST" enctype="multipart/form-data">
+                    <form action="../produkUpdate.php" method="POST" enctype="multipart/form-data">
                         
                         <input type="hidden" name="id" value="<?php echo $product['id']; ?>">
 
@@ -46,8 +46,8 @@ if (!$product) {
                             <div class="form-text">Biarkan kosong jika tidak ingin mengganti gambar.</div>
                             
                             <label class="form-label mt-2">Gambar Saat Ini:</label><br>
-                            <?php if ($product['image'] && file_exists($product['image'])): ?>
-                                <img src="<?php echo $product['image']; ?>" width="150" class="img-thumbnail">
+                            <?php if ($product['image'] && file_exists("../../" . $product['image'])): ?>
+                                <img src="../../<?php echo $product['image']; ?>" width="150" class="img-thumbnail">
                             <?php else: ?>
                                 <span class="text-muted small">(Tidak ada gambar)</span>
                             <?php endif; ?>
@@ -80,5 +80,5 @@ if (!$product) {
     </div>
 </main>
 <?php
-include "partials/footer.php";
+include "../../partials/admin_footer.php";
 ?>

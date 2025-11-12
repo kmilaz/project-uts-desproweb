@@ -1,10 +1,10 @@
 <?php
-include_once "database/koneksi.php";
-include_once "model/produkModel.php";
+
+include_once "../model/produkModel.php";
 
 if (isset($_POST['submit'])) {
     $data = $_POST;
-    $targetdir = "storage/";
+    $targetdir = "../storage/";
     $allowedExtensions = array("jpg", "jpeg", "png", "gif");
     $maxsize = 3 * 1024 * 1024;
 
@@ -19,15 +19,15 @@ if (isset($_POST['submit'])) {
         if (in_array($fileType, $allowedExtensions) && $fileSize <= $maxsize) {
             if (move_uploaded_file($_FILES["imageFile"]["tmp_name"], $targetfile)) {
                 
-                $data['image'] = $targetfile; 
-                $simpan = storeProduct($connection, $data); 
+                $data['image'] = "storage/" . $newFileName; 
+                $simpan = storeProduct($data); 
                 
                 if ($simpan) {
                     echo "Produk baru berhasil disimpan.";
-                    header("Location: produkView.php"); 
+                    header("Location: views/produkView.php"); 
                     exit;
                 } else {
-                    echo "Gagal menyimpan data ke database: " . pg_last_error($connection);
+                    echo "Gagal menyimpan data ke database: " . pg_last_error(get_connection());
                     unlink($targetfile); 
                 }
 

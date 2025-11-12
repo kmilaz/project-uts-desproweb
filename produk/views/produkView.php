@@ -1,10 +1,10 @@
 <?php
-$pageTitle = "Admin - Daftar Produk";
-include "partials/header.php"; 
-include_once "database/koneksi.php";
-include_once "model/produkModel.php";
 
-$products = getProduct($connection);
+$pageTitle = "Admin - Daftar Produk";
+include "../../partials/admin_header.php"; 
+include_once "../../model/produkModel.php";
+
+$products = getProduct();
 ?>
 
 <main class="container my-4">
@@ -33,8 +33,8 @@ $products = getProduct($connection);
                             <?php foreach ($products as $product): ?>
                             <tr class="align-middle">
                                 <td>
-                                    <?php if ($product['image'] && file_exists($product['image'])): ?>
-                                        <img src="<?php echo $product['image']; ?>" alt="<?php echo htmlspecialchars($product['name']); ?>" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+                                    <?php if ($product['image'] && file_exists("../../" . $product['image'])): ?>
+                                        <img src="../../<?php echo $product['image']; ?>" alt="<?php echo htmlspecialchars($product['name']); ?>" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
                                     <?php else: ?>
                                         <span class="text-muted small">(No Image)</span>
                                     <?php endif; ?>
@@ -44,7 +44,7 @@ $products = getProduct($connection);
                                 <td><span class="badge bg-secondary"><?php echo htmlspecialchars($product['category']); ?></span></td>
                                 <td>
                                     <a href="produkEdit.php?id=<?php echo $product['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                                    <a href="produkDelete.php?id=<?php echo $product['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin hapus produk ini?')">Hapus</a>
+                                    <a href="../produkDelete.php?id=<?php echo $product['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin hapus produk ini?')">Hapus</a>
                                 </td>
                             </tr>
                             <?php endforeach; ?>
@@ -63,5 +63,5 @@ $products = getProduct($connection);
 </main>
 
 <?php
-include "partials/footer.php"; 
+include "../../partials/admin_footer.php"; 
 ?>
