@@ -1,4 +1,7 @@
 <?php
+session_start();
+require_once __DIR__ . '/../../auth/auth_helper.php';
+requireAuth(); // Protect this page
 
 $pageTitle = "Admin - Daftar Produk";
 include "../../partials/admin_header.php"; 
