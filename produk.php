@@ -1,5 +1,4 @@
 <?php
-    include 'database/koneksi.php';
     include_once 'model/produkModel.php'; 
 
     // --- BLOK KODE UNTUK ESTAFET DATA KERANJANG ---
@@ -29,7 +28,7 @@
 
     if ($productId > 0) {
         // Panggil fungsi dari database (dari produkModel.php)
-        $product = getProductById($connection, $productId);
+        $product = getProductById($productId);
     }
 
     if (!$product) {

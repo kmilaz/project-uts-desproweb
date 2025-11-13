@@ -2,6 +2,7 @@
     $pageTitle = "Shop";
     include 'partials/header.php';
     include_once "model/produkModel.php";
+    $result = getProduct();
 
     // --- BLOK KODE UNTUK ESTAFET DATA KERANJANG ---
     $cart_data_string_php = '';
@@ -26,10 +27,6 @@
         $initial_cart_js = json_encode($cart_array_for_js);
     }
     // --- AKHIR BLOK KODE ESTAFET ---
-
-    require_once 'database/koneksi.php';
-    $selectSql = 'SELECT * FROM "products"';
-    $result = pg_query($connection, $selectSql);
 ?>
 
 <main>
@@ -40,7 +37,7 @@
 
     <section class="shop-content">
         <div class="product-grid shop-grid">
-            <?php while($row = pg_fetch_assoc($result)):?>
+            <?php foreach($result as $row):?>
             <div class="product-card">
                 <a href="#" onclick="navigateTo('produk.php?id=<?= htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8')?>')">
                     <img src="<?= htmlspecialchars($row['image'], ENT_QUOTES, 'UTF-8') ?>" alt="<?= htmlspecialchars($row['name'], ENT_QUOTES, 'UTF-8') ?>">
@@ -48,7 +45,7 @@
                     <p>Rp <?= htmlspecialchars(number_format($row['price'], 0, ',', '.'), ENT_QUOTES, 'UTF-8') ?></p>
                 </a>
             </div>
-            <?php endwhile?>
+            <?php endforeach?>
         </div>
     </section>
 </main>
