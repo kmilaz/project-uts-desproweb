@@ -1,4 +1,13 @@
-<?php 
+<?php
+    session_start();
+    // Check if customer is logged in
+    require_once __DIR__ . '/auth/auth_helper.php';
+    requireCustomerAuth();
+    
+    // Get customer data
+    require_once 'model/userModel.php';
+    $customer = getCustomerById($_SESSION['customer_id']);
+
     $pageTitle = "Contact";
     include 'partials/header.php';
 ?>
