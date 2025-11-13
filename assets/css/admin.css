@@ -1,0 +1,78 @@
+/* Admin Panel Specific Styles */
+
+.admin-body {
+    background-color: #f5f5f5;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.admin-logo h2 {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.admin-logo i {
+    margin-right: 10px;
+}
+
+.admin-nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.admin-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.admin-nav a:hover {
+    background-color: rgba(255,255,255,0.15);
+}
+
+.admin-nav .logout-btn {
+    background-color: rgba(255,255,255,0.2);
+    padding: 8px 20px;
+    border-radius: 5px;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.admin-nav .logout-btn:hover {
+    background-color: rgba(255,255,255,0.3);
+    border-color: rgba(255,255,255,0.5);
+}
+
+.admin-nav i {
+    margin-right: 5px;
+}
+
+.admin-footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    margin-top: 50px;
+}
+
+.admin-footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+/* Override main content min-height for admin */
+.admin-body main {
+    min-height: calc(100vh - 200px);
+}
