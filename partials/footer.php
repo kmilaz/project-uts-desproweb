@@ -34,7 +34,7 @@
         var initialCartData = <?php echo isset($initial_cart_js) ? $initial_cart_js : '[]'; ?>;
     </script>
 
-    <script src="assets/jquery/jquery-3.7.1.js"></script>
-    <script src="assets/js/script.js"></script>
+    <script src="/assets/jquery/jquery-3.7.1.js"></script>
+    <script src="/assets/js/script.js"></script>
 </body>
 </html>
