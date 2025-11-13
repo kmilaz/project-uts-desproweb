@@ -429,3 +429,259 @@ section {
     line-height: 1.8; /* Memberi jarak antar baris agar mudah dibaca */
     color: var(--grey-color);
 }
+
+/* =================================
+   6. AUTH PAGES (LOGIN & REGISTER)
+   ================================= */
+
+/* Login & Register Container */
+.login-container,
+.register-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background-image: url('../img/hero-bg.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    min-height: 100vh;
+}
+
+.login-container::before,
+.register-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.85);
+}
+
+/* Login & Register Card */
+.login-card,
+.register-card {
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    max-width: 450px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    border-top: 4px solid var(--primary-color);
+}
+
+.register-card {
+    max-width: 550px;
+}
+
+/* Header Styling */
+.login-header,
+.register-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.login-header h2,
+.register-header h2 {
+    color: var(--text-color);
+    margin-bottom: 8px;
+    font-size: 2em;
+    font-weight: 600;
+}
+
+.login-header .subtitle,
+.register-header .subtitle {
+    color: var(--grey-color);
+    font-size: 0.95em;
+}
+
+/* Form Controls */
+.login-card .form-control,
+.register-card .form-control,
+.login-card textarea.form-control,
+.register-card textarea.form-control {
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    transition: border-color 0.3s ease;
+    width: 100%;
+}
+
+.register-card .form-control,
+.register-card textarea.form-control {
+    margin-bottom: 15px;
+}
+
+.login-card .form-control:focus,
+.register-card .form-control:focus,
+.login-card textarea.form-control:focus,
+.register-card textarea.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(232, 169, 65, 0.15);
+    outline: none;
+}
+
+.login-card .form-label,
+.register-card .form-label {
+    color: var(--text-color);
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* Form Row for Register */
+.register-card .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 0;
+}
+
+.register-card .form-row .mb-3 {
+    margin-bottom: 0 !important;
+}
+
+/* Buttons */
+.login-card .btn-primary,
+.register-card .btn-primary {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--primary-color);
+    border: none;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+}
+
+.register-card .btn-primary {
+    margin-top: 10px;
+}
+
+.login-card .btn-primary:hover,
+.register-card .btn-primary:hover {
+    background-color: #d1983a;
+}
+
+.login-card .btn-outline-primary {
+    width: 100%;
+    padding: 14px;
+    background-color: white;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+}
+
+.login-card .btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Messages */
+.error-message {
+    background-color: #fee;
+    color: #c33;
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-left: 4px solid #c33;
+}
+
+.success-message {
+    background-color: #efe;
+    color: #292;
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-left: 4px solid #292;
+}
+
+/* Divider */
+.divider {
+    text-align: center;
+    margin: 25px 0;
+    position: relative;
+}
+
+.divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--border-color);
+}
+
+.divider span {
+    background: white;
+    padding: 0 15px;
+    position: relative;
+    color: var(--grey-color);
+    font-size: 0.9em;
+}
+
+/* Links */
+.back-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-link a {
+    color: var(--grey-color);
+    font-size: 0.9em;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.back-link a:hover {
+    color: var(--primary-color);
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 20px;
+    color: var(--grey-color);
+    font-size: 0.95em;
+}
+
+.login-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.login-link a:hover {
+    color: #d1983a;
+}
+
+.login-card .text-muted,
+.register-card .text-muted {
+    color: var(--grey-color);
+    font-size: 0.85em;
+}
+
+.login-card small.text-muted,
+.register-card small.text-muted {
+    display: block;
+    margin-top: 5px;
+}
