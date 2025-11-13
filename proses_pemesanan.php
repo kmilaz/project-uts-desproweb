@@ -1,27 +1,19 @@
 <?php 
     $pageTitle = "Pesanan Diterima";
     include 'partials/header.php';
-    include 'data/produk_data.php'; // Butuh data produk untuk detail
+    include_once "model/produkModel.php";
+
+    $products = getProduct(); // Butuh data produk untuk detail
 
     // --- BLOK KODE UNTUK ESTAFET DATA KERANJANG ---
     $cart_data_string_php = '';
-    $initial_cart_js = '[]'; // Default keranjang kosong untuk JavaScript
+    // After successful order, clear the cart by keeping it empty
+    $initial_cart_js = '[]'; // Keranjang dikosongkan setelah pemesanan berhasil
 
     if (isset($_POST['cart_data']) && !empty($_POST['cart_data'])) {
-        // Ambil data keranjang dari halaman sebelumnya
+        // Ambil data keranjang untuk ditampilkan di ringkasan
         $cart_data_string_php = $_POST['cart_data'];
-
-        // Siapkan data untuk dioper ke JavaScript
-        $items_pairs = explode(',', $cart_data_string_php);
-        $cart_array_for_js = [];
-        foreach ($items_pairs as $pair) {
-            $details = explode(':', $pair);
-            if(count($details) == 2){
-                $cart_array_for_js[] = ['id' => $details[0], 'quantity' => (int)$details[1]];
-            }
-        }
-        // Ubah array PHP menjadi format JSON/JavaScript object
-        $initial_cart_js = json_encode($cart_array_for_js);
+        // NOTE: We don't populate $initial_cart_js here because we want to clear the cart after checkout
     }
     // --- AKHIR BLOK KODE ESTAFET ---
 ?>
