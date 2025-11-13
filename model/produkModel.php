@@ -1,6 +1,10 @@
 <?php
-function storeProduct($connection, $data)
+require_once __DIR__ . '/../database/koneksi.php';
+
+function storeProduct($data)
 {
+    $connection = get_connection();
+    
     $params = [
         $data['name'],
         $data['price'],
@@ -17,8 +21,10 @@ function storeProduct($connection, $data)
     return $result;
 }
 
-function updateProduct($connection, $id, $data)
+function updateProduct($id, $data)
 {
+    $connection = get_connection();
+    
     $params = [
         $data['name'],
         $data['price'],
@@ -42,22 +48,28 @@ function updateProduct($connection, $id, $data)
     return $result;
 }
 
-function deleteProduct($connection, $id)
+function deleteProduct($id)
 {
+    $connection = get_connection();
+    
     $sql = "DELETE FROM products WHERE id = $1";
     $result = pg_query_params($connection, $sql, [$id]);
     return $result;
 }
 
-function getProduct($connection)
+function getProduct()
 {
+    $connection = get_connection();
+    
     $sql = "SELECT * FROM products ORDER BY id DESC";
     $result = pg_query($connection, $sql);
     return pg_fetch_all($result, PGSQL_ASSOC);
 }
 
-function getProductById($connection, $id) 
+function getProductById($id) 
 {
+    $connection = get_connection();
+    
     $sql = "SELECT * FROM products WHERE id = $1";
     $result = pg_query_params($connection, $sql, [$id]);
     return pg_fetch_assoc($result);
